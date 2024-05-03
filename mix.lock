@@ -1,0 +1,3 @@
+%{
+  "diff_match_patch": {:hex, :diff_match_patch, "0.2.0", "5d7e3ef8fd6b5806a778f7f2630a2347b25a0b32501bc073a062912f1415c62c", [:mix], [], "hexpm", "7ffd724cad3419b826f59f4e466e714ca83ff471542ad0f897d1c6f6980e3012"},
+}

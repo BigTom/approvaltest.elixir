@@ -1,4 +1,4 @@
-defmodule ExApprovalTestTest.MixProject do
+defmodule ExApprovalTest.MixProject do
   use Mix.Project
 
   def project do

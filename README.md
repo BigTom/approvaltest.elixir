@@ -1,4 +1,4 @@
-# Elixir starter project
+# Approval Testing Framework for Elixir
 [![.github/workflows/test.yml](../../actions/workflows/test.yml/badge.svg)](../../actions/workflows/test.yml)
 
 ## Install

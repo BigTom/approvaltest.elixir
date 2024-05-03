@@ -7,7 +7,21 @@ defmodule ExApproval.MixProject do
       version: "0.1.0",
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
       deps: deps()
+    ]
+  end
+
+  defp description do
+    "Elixir package implementing the approval test pattern. see: https://approvaltests.com/"
+  end
+
+  defp package do
+    [
+      maintainers: ["Tom Ayerst"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/BigTom/approvaltest.elixir"},
     ]
   end
 

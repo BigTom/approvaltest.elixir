@@ -1,4 +1,4 @@
-defmodule ExApprovalTest do
+defmodule ExApproval do
   @spec gen_test_data_set(keyword(), fun()) :: list()
   @doc """
   Helper functions to implement approval testing

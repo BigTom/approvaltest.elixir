@@ -1,4 +1,4 @@
-defmodule ExApprovalTestTest do
+defmodule ExApprovalTest do
   use ExUnit.Case
   doctest ExApprovalTest
 
@@ -9,7 +9,7 @@ defmodule ExApprovalTestTest do
         "The quick brown fox jumps over the lazy dog."
       )
 
-    assert assert ExApprovalTest.same?(diffs)
+    assert assert ExApproval.same?(diffs)
   end
 
   test "diffs empty -> written strings" do
@@ -19,7 +19,7 @@ defmodule ExApprovalTestTest do
         "test"
       )
 
-    assert assert not ExApprovalTest.same?(diffs)
+    assert assert not ExApproval.same?(diffs)
   end
 
   test "diffs empty strings" do
@@ -29,7 +29,7 @@ defmodule ExApprovalTestTest do
         ""
       )
 
-    assert assert ExApprovalTest.same?(diffs)
+    assert assert ExApproval.same?(diffs)
   end
 
   test "diffs in one multiline" do
@@ -40,7 +40,7 @@ defmodule ExApprovalTestTest do
     """
     The quick brown fox jumps over the lazy dog.
     """)
-    assert ExApprovalTest.same?(diffs)
+    assert ExApproval.same?(diffs)
   end
 
   test "diffs in multiline" do
@@ -53,6 +53,6 @@ defmodule ExApprovalTestTest do
     The quick brown fox
     Jumps over the lazy dog.
     """)
-    assert not ExApprovalTest.same?(diffs)
+    assert not ExApproval.same?(diffs)
   end
 end

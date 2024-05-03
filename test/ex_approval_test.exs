@@ -1,6 +1,6 @@
 defmodule ExApprovalTest do
   use ExUnit.Case
-  doctest ExApprovalTest
+  doctest ExApproval
 
   test "diffs in one line" do
     diffs =

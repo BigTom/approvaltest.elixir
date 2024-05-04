@@ -1,6 +1,8 @@
 defmodule ExApproval.MixProject do
   use Mix.Project
 
+  @code_url "https://github.com/BigTom/approvaltest.elixir"
+
   def project do
     [
       app: :ex_approval,
@@ -9,7 +11,10 @@ defmodule ExApproval.MixProject do
       start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
-      deps: deps()
+      deps: deps(),
+      source_url: @code_url,
+      hompepage_url: @code_url,
+      aliases: aliases()
     ]
   end
 
@@ -21,16 +26,27 @@ defmodule ExApproval.MixProject do
     [
       maintainers: ["Tom Ayerst"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/BigTom/approvaltest.elixir"},
+      links: %{"GitHub" => @code_url},
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-      {:diff_match_patch, "~> 0.2.0"}
+      {:diff_match_patch, "~> 0.2.0"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
     ]
+  end
+
+  defp aliases do
+    [
+      push_check: ["deps.get", "test", "credo --format=sarif --strict"]
+    ]
+
+  end
+
+  def cli do
+    [preferred_envs: [push_check: :test]]
   end
 end

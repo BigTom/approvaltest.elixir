@@ -1,9 +1,13 @@
 defmodule ExApproval do
-  @spec gen_test_data_set(keyword(), fun()) :: list()
-  @doc """
+  @moduledoc """
   Helper functions to implement approval testing
   """
 
+  @spec gen_test_data_set(keyword(), fun()) :: list()
+  @doc """
+  creates a list of parameter sets that contains all the permutations of the
+  test data.
+  """
   def gen_test_data_set(parameters, input_constructor) do
     parameters
     |> Enum.map(fn {id, lst} -> Enum.map(lst, fn el -> {id, el} end) end)
@@ -12,10 +16,10 @@ defmodule ExApproval do
   end
 
   @spec permutations(list(list())) :: map()
-  def permutations([]), do: %{}
-  def permutations([hd]), do: Enum.map(hd, &Enum.into([&1], %{}))
+  defp permutations([]), do: %{}
+  defp permutations([hd]), do: Enum.map(hd, &Enum.into([&1], %{}))
 
-  def permutations([hd | tail]) do
+  defp permutations([hd | tail]) do
     for {k, v} <- hd,
         submap <-
           Enum.map(
@@ -26,6 +30,10 @@ defmodule ExApproval do
     end
   end
 
+  @spec same?(keyword()) :: boolean()
+  @doc """
+  Takes a diffset and returns true if there are no changes.
+  """
   def same?([]), do: true
 
   def same?(diffs) do

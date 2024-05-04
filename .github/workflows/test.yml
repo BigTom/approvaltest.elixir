@@ -2,7 +2,7 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    - cron: '30 6 * * SUN'  # <https://crontab.guru/#45_16_*_*_0> 
+    - cron: '25 6 * * SUN'  # <https://crontab.guru/#45_16_*_*_0> 
 
 jobs:
   test:
@@ -13,4 +13,4 @@ jobs:
         with:
           otp-version: '26'
           elixir-version: '1.16'
-      - run: ./run_tests.sh
+      - run: mix push_check

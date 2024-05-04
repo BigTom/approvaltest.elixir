@@ -26,7 +26,7 @@ defmodule ExApproval.MixProject do
     [
       maintainers: ["Tom Ayerst"],
       licenses: ["MIT"],
-      links: %{"GitHub" => @code_url},
+      links: %{"GitHub" => @code_url}
     ]
   end
 
@@ -34,19 +34,20 @@ defmodule ExApproval.MixProject do
   defp deps do
     [
       {:diff_match_patch, "~> 0.2.0"},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 
   defp aliases do
     [
+      check: ["deps.get", "format", "test", "credo --format=sarif --strict"],
       push_check: ["deps.get", "test", "credo --format=sarif --strict"]
     ]
-
   end
 
   def cli do
-    [preferred_envs: [push_check: :test]]
+    [preferred_envs: [push_check: :test, check: :test]]
   end
 end

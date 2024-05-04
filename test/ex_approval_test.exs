@@ -33,26 +33,32 @@ defmodule ExApprovalTest do
   end
 
   test "diffs in one multiline" do
-    diffs = Dmp.Diff.main(
-    """
-    The quick brown fox jumps over the lazy dog.
-    """,
-    """
-    The quick brown fox jumps over the lazy dog.
-    """)
+    diffs =
+      Dmp.Diff.main(
+        """
+        The quick brown fox jumps over the lazy dog.
+        """,
+        """
+        The quick brown fox jumps over the lazy dog.
+        """
+      )
+
     assert ExApproval.same?(diffs)
   end
 
   test "diffs in multiline" do
-    diffs = Dmp.Diff.main(
-    """
-    the quick brown fox
-    jumps over the lazy dog.
-    """,
-    """
-    The quick brown fox
-    Jumps over the lazy dog.
-    """)
+    diffs =
+      Dmp.Diff.main(
+        """
+        the quick brown fox
+        jumps over the lazy dog.
+        """,
+        """
+        The quick brown fox
+        Jumps over the lazy dog.
+        """
+      )
+
     assert not ExApproval.same?(diffs)
   end
 end
